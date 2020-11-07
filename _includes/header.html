@@ -1,0 +1,16 @@
+<header id="header">
+  <div class="inner">
+    <a href="#" class="image avatar"><img src="{{ "assets/images/avatar.jpg" | relative_url }}" alt="" /></a>
+    <div class="content">
+      <div class="inner">
+        {% if site.welcome %}
+        {% for item in site.welcome %}
+        {{ item.content }}
+        {% endfor %}
+        {% endif %}
+        <!-- <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p> -->
+        {% include navigation.html %}
+      </div>
+    </div>
+  </div>
+</header>
