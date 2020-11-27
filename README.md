@@ -1,6 +1,6 @@
 # Xavi's website
 
-This is a Jekyll-based website using the [Dimension](https://html5up.net/dimension) HTML5up template.
+This is a Jekyll-based website using the [w3 css](https://www.w3schools.com/w3css/default.asp).
 
 TODO:
 * Add publications.
