@@ -4,25 +4,13 @@ layout: default
 
 {% for item in site.main_pages %}
   <section id="{{ item.anchor }}">
-    <header class="major">
-      <h2>{{ item.title }}</h2>
-    </header>
-    {% if item.header_image %}
-      <span class="image main"><img src="{{ "/assets/images/" | append: item.header_image | absolute_url }}" width="400" height="100" alt="" /></span>
-    {% endif %}
-    {% if item.learn_more %}
-      {% assign content = item.content | split: "/split/" %}
-      <span id="less">
-        {{ content[0] | strip | append: "<span id='dots'>...</span>" | markdownify }}
-      </span>
-      <span id="more">
-        {{ item.content | replace: "/split/", "" | markdownify }}
-      </span>
-      <ul class="actions">
-        <li><a id="learnMore" onclick="myFunction('{{ item.anchor }}')" class="button">Learn More</a></li>
-      </ul>
-    {% else %}
-      {{ item.content | replace: "/split/", "" | markdownify }}
-    {% endif %}
+    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
+    <h2 class="w3-text-dark-grey">{{ item.title }}</h2>
+    <hr style="width:200px" class="w3-dark-gray">
+    <!-- {% if item.header_image %} -->
+      <!-- <span class="image main"><img src="{{ "/assets/images/" | append: item.header_image | absolute_url }}" width="400" height="100" alt="" /></span> -->
+    <!-- {% endif %} -->
+    {{ item.content | markdownify }}
+    </div>
   </section>
 {% endfor %}

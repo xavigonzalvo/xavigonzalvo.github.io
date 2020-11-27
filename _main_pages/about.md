@@ -1,12 +1,11 @@
 ---
 title: About
 anchor: about
-learn_more: True
 ---
 
 I got my M.Sc. degree in Electrical Engineering from Enginyeria i
 Arquitectura La Salle, Universitat Ramon Llull (URL), Barcelona, Spain
-in 2004. In 2010 I completed my Ph.D. studies in also at Ramon Llull./split/
+in 2004. In 2010 I completed my Ph.D. studies in also at Ramon Llull.
 
 I was with the Department of Communications and Signal Theory, Enginyeria
 i Arquitectura LaSalle, as an Assistant Researcher from 2003 to March 2008.
@@ -21,4 +20,4 @@ and machine intelligence team in Google NY.
 This is a personal website. The opinions expressed here represent my own and
 not those of Google.
 
-This website is made with [Jekyll](https://jekyllrb.com/).
+This website is made with [Jekyll](https://jekyllrb.com/){:.w3-hover-text-green}.

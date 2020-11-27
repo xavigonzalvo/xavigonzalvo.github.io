@@ -1,36 +1,25 @@
 {% if site.main_pages %}
-<nav class="navbar navbar-dark">
-  <button class="navbar-toggler" type="button" data-toggle="collapse"
-  data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-  aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<!-- Icon Bar (Sidebar - hidden on small screens) -->
+<nav class="w3-black w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+  <!-- Avatar image in top left corner -->
+  <img src="{{ "assets/images/avatar.png" | relative_url }}" style="width:100%">
+  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
+    <i class="fa fa-home w3-xxlarge"></i>
+    <p>HOME</p>
+  </a>
+  {% for item in site.main_pages %}
+    {% if item.title %}
+    <a class="w3-bar-item w3-button w3-padding-large w3-hover-grey" href="/index.html#{{ item.anchor }}">
+      {% if item.anchor == 'about' %}
+      <i class="fa fa-user w3-xxlarge"></i>
+      {% elsif item.anchor == 'brief_cv' %}
+      <i class="fa fa-file w3-xxlarge"></i>
+      {% elsif item.anchor == 'research' %}
+      <i class="fa fa-search w3-xxlarge"></i>
+      {% endif %}
+      <p>{{ item.title | escape }}</p>
+    </a>
+    {% endif %}
+  {% endfor %}
 </nav>
-<div class="collapse" id="navbarToggleExternalContent">
-  <nav class="navbar navbar-expand-sm">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active"><a class="nav-link" href="/index.html">Home</a></li>
-        {% for item in site.main_pages %}
-          {% if item.title %}
-          <li class="nav-item active"><a class="nav-link" href="/index.html#{{ item.anchor }}">{{ item.title | escape }}</a></li>
-          {% endif %}
-        {% endfor %}
-        {% assign default_paths = site.pages | map: "path" %}
-        {% assign page_paths = site.header_pages | default: default_paths %}
-        {% if page_paths %}
-          {% for path in page_paths %}
-            {% assign my_page = site.pages | where: "path", path | first %}
-            {% if my_page.title %}
-            <li class="nav-item active"><a class="nav-link" href="{{ my_page.url | relative_url }}#{{ my_page.anchor }}">{{ my_page.title | escape }}</a></li>
-            {% endif %}
-          {% endfor %}
-        {% endif %}
-      </ul>
-    </div>
-  </nav>
-</div>
 {% endif %}

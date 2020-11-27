@@ -3,7 +3,8 @@ title: Brief CV
 anchor: brief_cv
 ---
 
-| Year    | Position  |
+{:.w3-table .w3-card-4 .w3-striped .w3-hoverable}
+| **Year**   |  **Position**  |
 | ------- |:---------:|
 | 2003    | BSc on Electrical engineering |
 | 2005    | MSc on Electrical engineering |

@@ -1,28 +1,15 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
-
   {% include head.html %}
-
   <body>
-
-    <div id="wrapper">
-      {% include header.html %}
-
-      <div id="main">
-        {{ content }}
-      </div>
-
-      {% include footer.html %}
-    </div>
-
-    <!-- Scripts -->
-    <script src="{{ "assets/js/jquery.min.js" | absolute_url }}"></script>
-    <script src="{{ "assets/js/jquery.poptrox.min.js" | absolute_url }}"></script>
-    <script src="{{ "assets/js/browser.min.js" | absolute_url }}"></script>
-    <script src="{{ "assets/js/breakpoints.min.js" | absolute_url }}"></script>
-    <script src="{{ "assets/js/util.js" | absolute_url }}"></script>
-    <script src="{{ "assets/js/main.js" | absolute_url }}"></script>
-
+  {% include navigation.html %}
+  <div class="w3-padding-large" id="main">
+    {% include header.html %}
+    {{ content }}
+  </div>
+  <!-- {% include footer.html %} -->
+  {% if jekyll.environment == 'production' %}
+  {% include google-analytics.html %}
+  {% endif %}
   </body>
-
 </html>
