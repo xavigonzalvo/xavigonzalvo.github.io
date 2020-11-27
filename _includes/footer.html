@@ -1,24 +1,21 @@
-<footer id="footer">
-  <div class="inner">
-    <ul class="icons">
-      {% if site.twitter_username %}
-        <li><a href="https://twitter.com/{{ site.twitter_username }}" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-      {% endif %}
-      {% if site.facebook_username %}
-        <li><a href="https://www.facebook.com/{{ site.facebook_username }}" class="icon fa-facebook"><span class="label">Facebook</span></a></li> -->
-      {% endif %}
-      {% if site.github_username %}
-        <li><a href="https://github.com/{{ site.github_username }}" class="icon fa-github"><span class="label">GitHub</span></a></li>
-      {% endif %}
-      {% if site.researchgate_username %}
-        <li><a href="https://www.researchgate.net/profile/{{ site.researchgate_username }}" class="icon fa-paperclip"><span class="label">Research Gate</span></a></li>
-      {% endif %}
-      {% if site.linkedin_username %}
-        <li><a href="https://www.linkedin.com/in/{{ site.linkedin_username }}/" class="icon fa-linkedin-square"><span class="label">LinkedIn</span></a></li>
-      {% endif %}
-    </ul>
-    <ul class="copyright">
-      <li>&copy; {{ site.title }}</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-    </ul>
-  </div>
+<footer id="footer" class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+  {% if site.twitter_username %}
+    <a href="https://twitter.com/{{ site.twitter_username }}"><i class="fa fa-twitter w3-hover-opacity"></i></a>
+  {% endif %}
+  {% if site.github_username %}
+    <a href="https://github.com/{{ site.github_username }}"><i class="fa fa-github w3-hover-opacity"></i></a>
+  {% endif %}
+  {% if site.researchgate_username %}
+    <a href="https://www.researchgate.net/profile/{{ site.researchgate_username }}"><i class="fab fa-researchgate w3-hover-opacity"></i></a>
+  {% endif %}
+  {% if site.linkedin_username %}
+    <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}/"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
+  {% endif %}
+
+  <p class="w3-medium">
+    <i class="fas fa-copyright"></i>
+    {{ site.title }}
+  </p>
+    <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp"
+      target="_blank" class="w3-hover-text-green">w3.css</a></p>
 </footer>
