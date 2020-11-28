@@ -16,6 +16,8 @@
       <i class="fa fa-file w3-xxlarge"></i>
       {% elsif item.anchor == 'research' %}
       <i class="fa fa-search w3-xxlarge"></i>
+      {% elsif item.anchor == 'papers' %}
+      <i class="fas fa-pen-nib w3-xxlarge"></i>
       {% endif %}
       <p>{{ item.title | escape }}</p>
     </a>
