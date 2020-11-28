@@ -10,7 +10,6 @@ anchor: brief_cv
 | 2005    | MSc on Electrical engineering |
 | 2006    | Meteosam project |
 | 2007    | SALERO project |
-| 2008    | Diploma of Advanced Studies |
 | 2009    | Research engineer at Phonetic-arts, Cambridge, UK |
 | 2010    | PhD |
 | 2011    | Research scientist at Google UK |
