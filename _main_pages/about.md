@@ -1,5 +1,5 @@
 ---
-title: About
+title: About me
 anchor: about
 ---
 
@@ -19,5 +19,3 @@ and machine intelligence team in Google NY.
 
 This is a personal website. The opinions expressed here represent my own and
 not those of Google.
-
-This website is made with [Jekyll](https://jekyllrb.com/){:.w3-hover-text-green}.
