@@ -16,3 +16,4 @@ anchor: brief_cv
 | 2013    | Technical Lead Manager of the TTS research team at Google UK |
 | 2016    | Research and machine intelligence (RMI) at Google NY |
 | 2017    | We deliver **AdaNet** as part of our research at Google NY |
+| 2019    | Technical lead of the AutoLX team, AutoML |
