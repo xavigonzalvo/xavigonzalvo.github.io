@@ -5,11 +5,13 @@ import { useStaticQuery, graphql } from "gatsby";
 const PaperList = () => {
   const data = useStaticQuery(graphql`
     query CSVListQuery {
-      allDataCsv {
+      allPapersCsv(sort: { fields: Year, order: DESC }) {
         nodes {
-          id
-          letter
-          value
+          Year
+          Authors
+          Title
+          URL
+          Conference
         }
       }
     }
@@ -19,9 +21,11 @@ const PaperList = () => {
     <div>
       <h2>CSV Data List</h2>
       <ul>
-        {data.allDataCsv.nodes.map((row) => (
+        {data.allPapersCsv.nodes.map((row) => (
           <li key={row.id}>
-            {row.letter} - {row.value}
+            {row.Year},{" "}
+            {row.URL ? <a href={row.URL}>{row.Title}</a> : row.Title},{" "}
+            {row.Authors}, {row.Conference}
           </li>
         ))}
       </ul>
