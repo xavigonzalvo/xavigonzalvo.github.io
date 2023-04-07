@@ -19,7 +19,7 @@ const PaperList = () => {
 
   return (
     <div>
-      <h2>CSV Data List</h2>
+      <h2>Papers</h2>
       <ul>
         {data.allPapersCsv.nodes.map((row) => (
           <li key={row.id}>

@@ -1,5 +1,6 @@
 import * as React from "react";
 import PaperList from "../components/PaperList";
+import MarkdownContent from "../components/MarkdownContent";
 
 const pageStyles = {
   color: "#232129",
@@ -81,11 +82,7 @@ const badgeStyle = {
 const IndexPage = () => {
   return (
     <main style={pageStyles}>
-      <h1 style={headingStyles}>Papers</h1>
-      <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.js</code> to see this page
-        update in real-time. 😎
-      </p>
+      <MarkdownContent fileName="about.md" />
       <PaperList />
     </main>
   );
