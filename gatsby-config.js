@@ -31,5 +31,12 @@ module.exports = {
         path: `${__dirname}/src/content`,
       },
     },
+    `gatsby-plugin-postcss`,
+    // {
+    //   resolve: `gatsby-plugin-postcss`,
+    //   options: {
+    //     postCssPlugins: [require("tailwindcss"), require("autoprefixer")],
+    //   },
+    // },
   ],
 };

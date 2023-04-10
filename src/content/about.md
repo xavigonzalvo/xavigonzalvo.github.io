@@ -1,5 +1,5 @@
 ---
-title: About me
+title: A short summary
 anchor: about
 ---
 
