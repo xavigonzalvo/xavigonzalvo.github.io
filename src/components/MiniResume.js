@@ -1,21 +1,34 @@
 import * as React from "react";
 import { useStaticQuery, graphql } from "gatsby";
+import googleIcon from "../icons/google.svg";
+import pattsIcon from "../icons/patts.svg";
+import salleIcon from "../icons/salle.svg";
 
 function MiniResume() {
   const data = useStaticQuery(graphql`
     query {
-      allWorkCsv(sort: { year: DESC }) {
+      allWorkCsv(sort: { start: DESC }) {
         nodes {
-          year
-          project
+          start
+          end
           company
           role
+          icon
         }
       }
     }
   `);
 
-  console.log(data);
+  function getIcon(name) {
+    switch (name) {
+      case "google":
+        return googleIcon;
+      case "patts":
+        return pattsIcon;
+      case "salle":
+        return salleIcon;
+    }
+  }
 
   return (
     <div class="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
@@ -44,13 +57,19 @@ function MiniResume() {
         {data.allWorkCsv.nodes.map((row) => (
           <li key={row.id} class="flex gap-4">
             <div class="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-              X
+              <img
+                alt=""
+                src={getIcon(row.icon)}
+                width="28"
+                height="28"
+                decoding="async"
+                data-nimg="1"
+                class="h-7 w-7"
+                loading="lazy"
+                style={{ color: "transparent;" }}
+              />
             </div>
             <dl class="flex flex-auto flex-wrap gap-x-2">
-              <dt class="sr-only">Project</dt>
-              <dd class="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
-                {row.project}
-              </dd>
               <dt class="sr-only">Company</dt>
               <dd class="w-full flex-none text-xs font-medium text-zinc-900 dark:text-zinc-100">
                 {row.company}
@@ -64,9 +83,9 @@ function MiniResume() {
                 class="ml-auto text-xs text-zinc-400 dark:text-zinc-500"
                 aria-label="2019 until Present"
               >
-                <time datetime="2019">{row.year}</time>{" "}
+                <time datetime={row.start}>{row.start}</time>{" "}
                 <span aria-hidden="true">—</span>{" "}
-                <time datetime="2023">Present</time>
+                <time datetime={row.end}>{row.end}</time>
               </dd>
             </dl>
           </li>

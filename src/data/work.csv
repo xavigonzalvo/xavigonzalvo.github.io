@@ -1,9 +1,6 @@
-year,project,company,role
-2006,"Meteosam project","La Salle","Research engineer"
-2007,"SALERO project","La Salle","Research engineer"
-2009,"TTS for videogames","Phonetic-arts, Cambridge, UK","Research engineer"
-2011,"TTS research team","Google UK","Research scientist"
-2013,"TTS research team","Google UK","Technical Lead Manager & research scientist"
-2016,"Research and machine intelligence","Google NY","Research scientist"
-2017,"AdaNet","Google NY","TLM & research scientist"
-2019,"AutoLX team","Google NY","TLM & research scientist"
+start,end,company,role,icon
+2003,2006,"La Salle","Intern engineer",salle
+2006,2008,"La Salle","Research engineer",salle
+2008,2011,"Phonetic-arts, Cambridge, UK","Research engineer",patts
+2011,2016,"Google UK","Research scientist",google
+2016,present,"Google NY","Research scientist",google
