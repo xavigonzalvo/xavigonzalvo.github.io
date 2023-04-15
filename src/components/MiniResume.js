@@ -1,8 +1,6 @@
 import * as React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import googleIcon from "../icons/google.svg";
-import pattsIcon from "../icons/patts.svg";
-import salleIcon from "../icons/salle.svg";
+import getIcon from "../components/utils";
 
 function MiniResume() {
   const data = useStaticQuery(graphql`
@@ -18,17 +16,6 @@ function MiniResume() {
       }
     }
   `);
-
-  function getIcon(name) {
-    switch (name) {
-      case "google":
-        return googleIcon;
-      case "patts":
-        return pattsIcon;
-      case "salle":
-        return salleIcon;
-    }
-  }
 
   return (
     <div class="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">

@@ -36,9 +36,7 @@ function Header() {
                     class="block h-16 w-16 origin-left pointer-events-auto"
                     href="/"
                     style={{ transform: "var(--avatar-image-transform);" }}
-                  >
-                    I
-                  </a>
+                  ></a>
                 </div>
               </div>
             </div>
