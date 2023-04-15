@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby";
 
 const PaperList = () => {
   const data = useStaticQuery(graphql`
-    query CSVListQuery {
+    query {
       allPapersCsv(sort: { Year: DESC }) {
         nodes {
           Year

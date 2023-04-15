@@ -1,36 +1,39 @@
 import React from "react";
-// import "../styles/tailwind.css";
+import { useStaticQuery, graphql } from "gatsby";
 
-const LINKS = [
-  // {
-  //   link: "about",
-  //   text: "About",
-  // },
-  {
-    link: "publications",
-    text: "Publications",
-  },
-  {
-    link: "projects",
-    text: "Projects",
-  },
-  // {
-  //   link: "contact",
-  //   text: "Contact",
-  // },
-];
+const formatPagePath = (path) => {
+  // Remove the leading and trailing "/"
+  const formattedPath = path.substring(1, path.length - 1);
+
+  // Capitalize the first letter
+  return formattedPath.charAt(0).toUpperCase() + formattedPath.slice(1);
+};
+
+const query = graphql`
+  query {
+    allSitePage(
+      filter: { path: { nin: ["/", "/404/", "/404.html", "/dev-404-page/"] } }
+    ) {
+      nodes {
+        path
+      }
+    }
+  }
+`;
 
 export default function Navigation() {
+  const data = useStaticQuery(query);
+
   return (
     <nav class="pointer-events-auto hidden md:block">
       <ul class="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
-        {LINKS.map((link) => (
+        {data.allSitePage.nodes.map((row) => (
           <li>
             <a
               class="relative block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400"
-              href={`/${link.link}`}
+              href={row.path}
             >
-              {link.text}
+              {formatPagePath(row.path)}
             </a>
           </li>
         ))}
@@ -40,6 +43,8 @@ export default function Navigation() {
 }
 
 export function DialogNavigation({ onClose }) {
+  const data = useStaticQuery(query);
+
   return (
     <div>
       <div
@@ -84,14 +89,14 @@ export function DialogNavigation({ onClose }) {
         </div>
         <nav class="mt-6">
           <ul class="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
-            {LINKS.map((link) => (
+            {data.allSitePage.nodes.map((row) => (
               <li>
                 <a
                   class="block py-2"
                   data-headlessui-state="open"
-                  href={`/${link.link}`}
+                  href={row.path}
                 >
-                  {link.text}
+                  {formatPagePath(row.path)}
                 </a>
               </li>
             ))}
