@@ -2,8 +2,9 @@ import * as React from "react";
 
 import Navigation, { DialogNavigation } from "../components/Navigation";
 import xaviAvatar from "../images/xavi-avatar.png";
+import DarkModeContext from "./DarkModeContext";
 
-function DarkThemeButton() {
+function DarkThemeButton({ dark, toggle }) {
   return (
     <div class="flex justify-end md:flex-1">
       <div class="pointer-events-auto">
@@ -11,6 +12,7 @@ function DarkThemeButton() {
           type="button"
           aria-label="Toggle dark mode"
           class="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
+          onClick={toggle}
         >
           <svg
             viewBox="0 0 24 24"
@@ -104,9 +106,11 @@ function Menu() {
 }
 
 function PageHeader() {
+  const { darkMode, toggleDarkMode } = React.useContext(DarkModeContext);
+
   return (
     <header
-      class="pointer-events-none relative z-50 flex flex-col"
+      class="pointer-events-none relative z-50 flex flex-col "
       style={{
         height: "var(--header-height)",
         "margin-bottom": "var(--header-mb)",
@@ -126,7 +130,7 @@ function PageHeader() {
                 <div class="relative flex gap-4">
                   <Avatar />
                   <Menu />
-                  <DarkThemeButton />
+                  <DarkThemeButton dark={darkMode} toggle={toggleDarkMode} />
                 </div>
               </div>
             </div>

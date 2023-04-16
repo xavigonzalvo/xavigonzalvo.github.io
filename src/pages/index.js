@@ -1,7 +1,7 @@
 import * as React from "react";
 import MarkdownContent from "../components/MarkdownContent";
 import PageHeader from "../components/PageHeader";
-import Borders from "../components/Borders";
+import Layout from "../components/Layout";
 import Footer from "../components/Footer";
 import MiniResume from "../components/MiniResume";
 
@@ -99,7 +99,7 @@ function Content({ children, rightSide }) {
 
 const IndexPage = () => {
   return (
-    <Borders>
+    <Layout>
       <div class="relative">
         <PageHeader />
         <div style={{ height: "var(--content-offset);" }}></div>
@@ -113,7 +113,7 @@ const IndexPage = () => {
         </main>
         <Footer />
       </div>
-    </Borders>
+    </Layout>
   );
 };
 

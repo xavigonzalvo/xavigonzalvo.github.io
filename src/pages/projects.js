@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
-import Borders from "../components/Borders";
+import Layout from "../components/Layout";
 import Footer from "../components/Footer";
 import PageHeader from "../components/PageHeader";
 import ProjectCard from "../components/ProjectCard";
@@ -44,7 +44,7 @@ function ProjectList() {
 
 function Projects() {
   return (
-    <Borders>
+    <Layout>
       <div class="relative">
         <PageHeader />
         <div style={{ height: "var(--content-offset);" }}></div>
@@ -63,7 +63,7 @@ function Projects() {
         </main>
         <Footer />
       </div>
-    </Borders>
+    </Layout>
   );
 }
 

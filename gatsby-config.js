@@ -32,11 +32,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-postcss`,
-    // {
-    //   resolve: `gatsby-plugin-postcss`,
-    //   options: {
-    //     postCssPlugins: [require("tailwindcss"), require("autoprefixer")],
-    //   },
-    // },
+    `gatsby-plugin-react-helmet`,
   ],
 };

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import Borders from "../components/Borders";
+import Layout from "../components/Layout";
 import PaperList from "../components/PaperList";
 import Footer from "../components/Footer";
 import PageHeader from "../components/PageHeader";
@@ -8,7 +8,7 @@ import Content from "../components/Content";
 
 function Main() {
   return (
-    <Borders>
+    <Layout>
       <div class="relative">
         <PageHeader />
         <div style={{ height: "var(--content-offset);" }}></div>
@@ -19,7 +19,7 @@ function Main() {
         </main>
         <Footer />
       </div>
-    </Borders>
+    </Layout>
   );
 }
 
