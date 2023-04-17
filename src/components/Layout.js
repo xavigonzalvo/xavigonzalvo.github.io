@@ -3,13 +3,26 @@ import { Helmet } from "react-helmet";
 
 import DarkModeContext from "./DarkModeContext";
 
+function getItem(key) {
+  if (typeof window === "undefined") {
+    return null;
+  }
+  return JSON.parse(localStorage.getItem(key));
+}
+
+function setItem(key, value) {
+  if (typeof window !== "undefined") {
+    localStorage.setItem(key, JSON.stringify(value));
+  }
+}
+
 function Layout({ children }) {
   const [darkMode, setDarkMode] = React.useState(
-    () => JSON.parse(localStorage.getItem("darkMode")) || false
+    () => getItem("darkMode") || false
   );
 
   const saveDarkMode = (isDarkModeEnabled) => {
-    localStorage.setItem("darkMode", JSON.stringify(isDarkModeEnabled));
+    setItem("darkMode", isDarkModeEnabled);
   };
 
   const toggleDarkMode = () => {
