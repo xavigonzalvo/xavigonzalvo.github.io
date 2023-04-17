@@ -1,28 +1,14 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 
-const formatPagePath = (path) => {
-  // Remove the leading and trailing "/"
-  const formattedPath = path.substring(1, path.length - 1);
-
-  // Capitalize the first letter
-  return formattedPath.charAt(0).toUpperCase() + formattedPath.slice(1);
-};
-
-const query = graphql`
-  query {
-    allSitePage(
-      filter: { path: { nin: ["/", "/404/", "/404.html", "/dev-404-page/"] } }
-    ) {
-      nodes {
-        path
-      }
-    }
-  }
-`;
+import { formatPagePath, AllSitePageFragment } from "./utils";
 
 export default function Navigation() {
-  const data = useStaticQuery(query);
+  const data = useStaticQuery(graphql`
+    {
+      ...AllSitePageFragment
+    }
+  `);
 
   return (
     <nav class="pointer-events-auto hidden md:block">
@@ -43,7 +29,11 @@ export default function Navigation() {
 }
 
 export function DialogNavigation({ onClose }) {
-  const data = useStaticQuery(query);
+  const data = useStaticQuery(graphql`
+    {
+      ...AllSitePageFragment
+    }
+  `);
 
   return (
     <div>
