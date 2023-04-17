@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import Navigation, { DialogNavigation } from "../components/Navigation";
-import xaviAvatar from "../images/xavi-avatar.png";
+import xaviAvatar from "../images/xavi-avatar-small.png";
 import DarkModeContext from "./DarkModeContext";
 
 function DarkThemeButton({ dark, toggle }) {
