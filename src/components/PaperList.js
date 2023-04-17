@@ -34,12 +34,14 @@ const PaperList = () => {
                 <dt class="sr-only">Title</dt>
                 <dd class="flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
                   {row.URL ? (
-                    <a
-                      href={row.URL}
-                      style={{ display: "flex", "align-items": "center" }}
-                    >
-                      {row.Title}
-                      <AiOutlineFilePdf class="ml-2" />
+                    <a href={row.URL}>
+                      <span>
+                        <AiOutlineFilePdf
+                          className="mr-2"
+                          style={{ display: "inline" }}
+                        />
+                        {row.Title}
+                      </span>
                     </a>
                   ) : (
                     <div class="text-zinc-500">{row.Title}</div>
