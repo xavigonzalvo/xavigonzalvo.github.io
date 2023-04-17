@@ -1,5 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
+import { AiOutlineFilePdf } from "react-icons/ai";
 
 const PaperList = () => {
   const data = useStaticQuery(graphql`
@@ -33,11 +34,15 @@ const PaperList = () => {
                 <dt class="sr-only">Title</dt>
                 <dd class="flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
                   {row.URL ? (
-                    <a href={row.URL} class="text-teal-500">
+                    <a
+                      href={row.URL}
+                      style={{ display: "flex", "align-items": "center" }}
+                    >
                       {row.Title}
+                      <AiOutlineFilePdf class="ml-2" />
                     </a>
                   ) : (
-                    row.Title
+                    <div class="text-zinc-500">{row.Title}</div>
                   )}
                 </dd>
                 <dt class="sr-only">Authors</dt>
