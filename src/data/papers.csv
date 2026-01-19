@@ -25,3 +25,6 @@ Year,Authors,Title,URL,Conference,Pages,City,URL Researchgate,URL Schoolar,URL C
 2022,"Scott Yak, Javier Gonzalvo, Mehryar Mohri, Corinna Cortes",AdaME: Adaptive learning of multisource adaptation ensembles,https://openreview.net/forum?id=yXOViWIm1Z&referrer=%5Bthe%20profile%20of%20Corinna%20Cortes%5D(%2Fprofile%3Fid%3D~Corinna_Cortes1),NeurIPS 2022 Workshop DistShift,,,,,
 2024,"Hanna Mazzawi, Xavi Gonzalvo, Michael Wunder, Sammy Jerome, Benoit Dherin","Deep Fusion: Efficient Network Training via Pre-trained Initializations",https://proceedings.mlr.press/v235/mazzawi24a.html,"ICML 2024",,,,,
 2024,"Michael Munn, Benoit Dherin, Javier Gonzalvo","The Impact of Geometric Complexity on Neural Collapse in Transfer Learning",https://arxiv.org/abs/2405.15706,"",,,,,
+2025,"Benoit Dherin, Michael Munn, Hanna Mazzawi, Michael Wunder, Javier Gonzalvo","Learning without training: The implicit dynamics of in-context learning",https://arxiv.org/abs/2507.16003,"",,,,,
+2025,"Hanna Mazzawi, Benoit Dherin, Michael Munn, Michael Wunder, Javier Gonzalvo","Transmuting prompts into weights",https://arxiv.org/abs/2510.08734,"",,,,,
+2025,"Adrian Goldwaser, Michael Munn, Javier Gonzalvo, Benoit Dherin","Equivalence of Context and Parameter Updates in Modern Transformer Blocks",https://arxiv.org/abs/2511.17864,"",,,,,
