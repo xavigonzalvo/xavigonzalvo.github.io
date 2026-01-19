@@ -19,6 +19,11 @@ export const formatPagePath = (path) => {
   // Remove the leading and trailing "/"
   const formattedPath = path.substring(1, path.length - 1);
 
+  // Special case for projects page
+  if (formattedPath === "projects") {
+    return "Research projects";
+  }
+
   // Capitalize the first letter
   return formattedPath.charAt(0).toUpperCase() + formattedPath.slice(1);
 };
