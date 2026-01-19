@@ -53,7 +53,11 @@ const PaperList = () => {
                 </dd>
                 <dt class="sr-only">Conference</dt>
                 <dd class="text-xs text-zinc-500 dark:text-zinc-400">
-                  {row.Conference}
+                  {(row.Conference || (row.URL && row.URL.includes('arxiv.org') ? 'arXiv' : '')) && (
+                    <span class="inline-block bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 px-2 py-0.5 rounded-md text-xs font-medium">
+                      {row.Conference || 'arXiv'}
+                    </span>
+                  )}
                 </dd>
               </div>
             </dl>
