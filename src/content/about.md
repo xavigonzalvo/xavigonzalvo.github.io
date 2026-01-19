@@ -3,12 +3,10 @@ title: A short summary
 anchor: about
 ---
 
-I obtained my M.Sc. degree in Electrical Engineering from Enginyeria i Arquitectura La Salle, Universitat Ramon Llull (URL) in Barcelona, Spain, in 2004. In 2010, I completed my Ph.D. studies at the same institution.
+I received my M.Sc. (2004) and Ph.D. (2010) in Electrical Engineering from Universitat Ramon Llull in Barcelona, Spain.
 
-Between 2003 and March 2008, I worked as an Assistant Researcher at the Department of Communications and Signal Theory, Enginyeria i Arquitectura LaSalle. Following that, I joined Phonetic Arts Ltd in Cambridge, UK, which was a video game company dedicated to producing high-quality synthetic speech.
+I worked as an Assistant Researcher at La Salle (2003-2008) before joining Phonetic Arts Ltd in Cambridge, UK, a company focused on high-quality synthetic speech for video games. After three years, we were acquired by Google. At Google London, I led the speech research team, then moved to Google NY to join the Research and Machine Intelligence team.
 
-After spending three exhilarating years as a researcher at Phonetic Arts Ltd, we were acquired and moved to Google in London. At Google, I was appointed as a technical lead manager of the research team. After five years, I transitioned to the Research and Machine Intelligence team in Google NY.
-
-I'm now leading the AutoLX team to improve core ML algorithms in areas like AutoML, ML efficiency, ensembles, multi-source adaptation, model architectures, multiple loss functions, and transformers.
+I previously led the AutoML team, working on ML efficiency, ensembles, multi-source adaptation, and neural architecture search. I'm now focused on LLMs for efficiency and learning without training. My research explores in-context learning dynamics, how prompts can be transmuted into model weights, and the equivalence between context and parameter updates in transformers, aiming to improve long context handling and optimize memory and tokens usage at the model level.
 
 This website is a personal platform, and any views expressed here are solely mine and do not represent the opinions of Google.
