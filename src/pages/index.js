@@ -1,9 +1,11 @@
 import * as React from "react";
+import { useStaticQuery, graphql } from "gatsby";
 import MarkdownContent from "../components/MarkdownContent";
 import PageHeader from "../components/PageHeader";
 import Layout from "../components/Layout";
 import Footer from "../components/Footer";
 import MiniResume from "../components/MiniResume";
+import ProjectCard from "../components/ProjectCard";
 
 function About({ children }) {
   return (
@@ -97,6 +99,57 @@ function Content({ children, rightSide }) {
   );
 }
 
+function ProjectList() {
+  const data = useStaticQuery(graphql`
+    query {
+      allProjectsCsv {
+        nodes {
+          project
+          company
+          role
+          icon
+          description
+          url
+        }
+      }
+    }
+  `);
+
+  return (
+    <div class="sm:px-8">
+      <div class="mx-auto max-w-7xl lg:px-8">
+        <div class="relative px-4 sm:px-8 lg:px-12">
+          <div class="mx-auto max-w-2xl lg:max-w-5xl">
+            <header class="max-w-2xl">
+              <h1 class="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
+                Interesting projects
+              </h1>
+              <p class="mt-6 text-base text-zinc-600 dark:text-zinc-400">
+                These are some of the projects I've worked during my career.
+              </p>
+            </header>
+            <div class="mt-16 sm:mt-20">
+              <ul
+                role="list"
+                class="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
+              >
+                {data.allProjectsCsv.nodes.map((row) => (
+                  <ProjectCard
+                    name={row.project}
+                    description={row.description}
+                    url={row.url}
+                    icon={row.icon}
+                  />
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const IndexPage = () => {
   return (
     <Layout>
@@ -110,6 +163,7 @@ const IndexPage = () => {
           <Content rightSide={<MiniResume />}>
             <MarkdownContent isH1={false} fileName="about.md" />
           </Content>
+          <ProjectList />
         </main>
         <Footer />
       </div>
