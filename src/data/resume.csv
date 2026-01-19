@@ -1,4 +1,4 @@
-year,title
-2003,"BSc on Electrical engineering"
-2005,"MSc on Electrical engineering"
-2010,"PhD"
+year,degree,field,title
+2003,"BSc","Electrical engineering","Speaker detection using an array of microphones"
+2005,"MSc","Electrical engineering","A dialogue system using Reinforcement learning"
+2010,"PhD","Information technology","A hybrid speech synthesis using HMM and concatenative speech generation"
