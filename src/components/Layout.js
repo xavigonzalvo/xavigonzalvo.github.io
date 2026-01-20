@@ -2,6 +2,7 @@ import * as React from "react";
 import { Helmet } from "react-helmet";
 
 import DarkModeContext from "./DarkModeContext";
+import StructuredData from "./StructuredData";
 
 function getItem(key) {
   if (typeof window === "undefined") {
@@ -36,6 +37,7 @@ function Layout({ children }) {
       <Helmet>
         <html className={darkMode ? "dark" : ""} />
       </Helmet>
+      <StructuredData />
       <div class="flex h-full flex-col bg-zinc-50 dark:bg-black">
         <div class="fixed inset-0 flex justify-center sm:px-8">
           <div class="flex w-full max-w-7xl lg:px-8">

@@ -6,6 +6,7 @@ import Layout from "../components/Layout";
 import Footer from "../components/Footer";
 import MiniResume from "../components/MiniResume";
 import ProjectCard from "../components/ProjectCard";
+import SEO from "../components/SEO";
 
 function About({ children }) {
   return (
@@ -186,4 +187,10 @@ const IndexPage = () => {
 
 export default IndexPage;
 
-export const Head = () => <title>Home Page</title>;
+export const Head = () => (
+  <SEO
+    title="Home"
+    description="Machine Learning Researcher at Google, specializing in LLMs, AutoML, and neural architecture search. PhD in Electrical Engineering from Universitat Ramon Llull."
+    pathname="/"
+  />
+);
