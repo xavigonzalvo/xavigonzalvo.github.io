@@ -28,3 +28,4 @@ Year,Authors,Title,URL,Conference,Pages,City,URL Researchgate,URL Schoolar,URL C
 2025,"Benoit Dherin, Michael Munn, Hanna Mazzawi, Michael Wunder, Javier Gonzalvo","Learning without training: The implicit dynamics of in-context learning",https://arxiv.org/abs/2507.16003,"",,,,,
 2025,"Hanna Mazzawi, Benoit Dherin, Michael Munn, Michael Wunder, Javier Gonzalvo","Transmuting prompts into weights",https://arxiv.org/abs/2510.08734,"",,,,,
 2025,"Adrian Goldwaser, Michael Munn, Javier Gonzalvo, Benoit Dherin","Equivalence of Context and Parameter Updates in Modern Transformer Blocks",https://arxiv.org/abs/2511.17864,"",,,,,
+2026,"Dyah Adila, Hanna Mazzawi, Benoit Dherin, Javier Gonzalvo","Grow, Don't Overwrite: Fine-tuning Without Forgetting",https://arxiv.org/abs/2603.08647,"",,,,,
