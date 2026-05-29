@@ -178,8 +178,8 @@ const IndexPage = () => {
           <Content
             rightSide={
               <>
-                <ScholarCard />
                 <MiniResume />
+                <ScholarCard />
               </>
             }
           >
