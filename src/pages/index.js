@@ -5,6 +5,7 @@ import PageHeader from "../components/PageHeader";
 import Layout from "../components/Layout";
 import Footer from "../components/Footer";
 import MiniResume from "../components/MiniResume";
+import ScholarCard from "../components/ScholarCard";
 import ProjectCard from "../components/ProjectCard";
 import SEO from "../components/SEO";
 
@@ -174,7 +175,14 @@ const IndexPage = () => {
           <About>
             <MarkdownContent isH1={true} fileName="intro.md" />
           </About>
-          <Content rightSide={<MiniResume />}>
+          <Content
+            rightSide={
+              <>
+                <ScholarCard />
+                <MiniResume />
+              </>
+            }
+          >
             <MarkdownContent isH1={false} fileName="about.md" />
           </Content>
           <ProjectList />
