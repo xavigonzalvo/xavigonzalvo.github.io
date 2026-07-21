@@ -1,21 +1,25 @@
 import * as React from "react";
 import { useStaticQuery, graphql } from "gatsby";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import NorthEastIcon from "@mui/icons-material/NorthEast";
 
 function Metric({ label, all, recent }) {
   return (
-    <li class="flex items-baseline justify-between gap-4">
-      <dt class="text-xs text-zinc-600 dark:text-zinc-400">{label}</dt>
-      <dd class="flex items-baseline gap-3">
-        <span class="text-sm font-semibold tabular-nums text-zinc-900 dark:text-zinc-100">
+    <Box component="li" sx={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 2 }}>
+      <Typography sx={{ fontSize: "0.75rem", color: "text.secondary" }}>{label}</Typography>
+      <Box sx={{ display: "flex", alignItems: "baseline", gap: 1.5 }}>
+        <Typography sx={{ fontSize: "0.875rem", fontWeight: 600, fontVariantNumeric: "tabular-nums", color: "text.primary" }}>
           {all.toLocaleString()}
-        </span>
+        </Typography>
         {recent != null && (
-          <span class="w-10 text-right text-xs tabular-nums text-zinc-400 dark:text-zinc-500">
+          <Typography sx={{ width: 40, textAlign: "right", fontSize: "0.75rem", fontVariantNumeric: "tabular-nums", color: "text.secondary" }}>
             {recent.toLocaleString()}
-          </span>
+          </Typography>
         )}
-      </dd>
-    </li>
+      </Box>
+    </Box>
   );
 }
 
@@ -34,72 +38,58 @@ function ScholarCard() {
     }
   `);
 
-  // The build-time fetch failed (e.g. Scholar blocked the request): render
-  // nothing rather than an empty card.
   if (!scholarStats || scholarStats.hIndexAll == null) {
     return null;
   }
 
-  // Scholar's "recent" column covers the last five full years.
   const recentSince = new Date().getFullYear() - 5;
 
   return (
-    <div class="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
-      <h2 class="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        <svg
+    <Box sx={{ borderRadius: "16px", border: 1, borderColor: "divider", p: 3 }}>
+      <Typography component="h2" sx={{ display: "flex", alignItems: "center", fontSize: "0.875rem", fontWeight: 600, color: "text.primary" }}>
+        <Box
+          component="svg"
           viewBox="0 0 24 24"
           aria-hidden="true"
-          class="h-6 w-6 flex-none fill-zinc-400 dark:fill-zinc-500"
+          sx={{ height: 22, width: 22, flex: "none", fill: "text.secondary" }}
         >
-          <path d="M12 24a7 7 0 110-14 7 7 0 010 14zm0-24L0 9.5l4.838 3.94A8 8 0 0112 9a8 8 0 017.162 4.44L24 9.5z"></path>
-        </svg>
-        <span class="ml-3">Google Scholar</span>
-      </h2>
+          <path d="M12 24a7 7 0 110-14 7 7 0 010 14zm0-24L0 9.5l4.838 3.94A8 8 0 0112 9a8 8 0 017.162 4.44L24 9.5z" />
+        </Box>
+        <Box component="span" sx={{ ml: 1.5 }}>Google Scholar</Box>
+      </Typography>
 
-      <div class="mt-6 flex items-baseline justify-end gap-3 text-[0.65rem] font-medium uppercase tracking-wide text-zinc-400 dark:text-zinc-500">
+      <Box sx={{ mt: 3, display: "flex", alignItems: "baseline", justifyContent: "flex-end", gap: 1.5, fontSize: "0.65rem", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.05em", color: "text.secondary" }}>
         <span>All</span>
-        <span class="w-10 text-right">Since {recentSince}</span>
-      </div>
-      <ol class="mt-2 space-y-3">
-        <Metric
-          label="Citations"
-          all={scholarStats.citationsAll}
-          recent={scholarStats.citationsRecent}
-        />
-        <Metric
-          label="h-index"
-          all={scholarStats.hIndexAll}
-          recent={scholarStats.hIndexRecent}
-        />
-        <Metric
-          label="i10-index"
-          all={scholarStats.i10IndexAll}
-          recent={scholarStats.i10IndexRecent}
-        />
-      </ol>
+        <Box component="span" sx={{ width: 40, textAlign: "right" }}>Since {recentSince}</Box>
+      </Box>
 
-      <a
-        class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-md bg-zinc-50 py-2 px-3 text-sm font-medium text-zinc-900 outline-offset-2 transition hover:bg-zinc-100 active:bg-zinc-100 active:text-zinc-900/60 dark:bg-zinc-800/50 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 dark:active:bg-zinc-800/50 dark:active:text-zinc-50/70 group"
+      <Box component="ol" sx={{ listStyle: "none", m: 0, mt: 1, p: 0, display: "flex", flexDirection: "column", gap: 1.5 }}>
+        <Metric label="Citations" all={scholarStats.citationsAll} recent={scholarStats.citationsRecent} />
+        <Metric label="h-index" all={scholarStats.hIndexAll} recent={scholarStats.hIndexRecent} />
+        <Metric label="i10-index" all={scholarStats.i10IndexAll} recent={scholarStats.i10IndexRecent} />
+      </Box>
+
+      <Button
+        component="a"
         href={scholarStats.profileUrl}
         target="_blank"
         rel="noreferrer"
+        endIcon={<NorthEastIcon sx={{ fontSize: 16 }} />}
+        sx={(t) => ({
+          mt: 3,
+          width: "100%",
+          borderRadius: "8px",
+          py: 1,
+          fontSize: "0.875rem",
+          fontWeight: 500,
+          color: t.palette.mode === "dark" ? "#d4d4d8" : "#18181b",
+          bgcolor: t.palette.mode === "dark" ? "rgba(39,39,42,0.5)" : "#fafafa",
+          "&:hover": { bgcolor: t.palette.mode === "dark" ? "#27272a" : "#f4f4f5" },
+        })}
       >
         View profile
-        <svg
-          viewBox="0 0 16 16"
-          fill="none"
-          aria-hidden="true"
-          class="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50"
-        >
-          <path
-            d="M6.75 3.25h6m0 0v6m0-6-7.5 7.5"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          ></path>
-        </svg>
-      </a>
-    </div>
+      </Button>
+    </Box>
   );
 }
 

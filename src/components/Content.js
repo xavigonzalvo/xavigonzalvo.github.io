@@ -1,18 +1,13 @@
 import * as React from "react";
+import Box from "@mui/material/Box";
+
+import Container from "./Container";
 
 function Content({ children }) {
   return (
-    <>
-      <div class="sm:px-8 mt-16 sm:mt-32">
-        <div class="mx-auto max-w-7xl lg:px-8">
-          <div class="relative px-4 sm:px-8 lg:px-12">
-            <div class="mx-auto max-w-2xl lg:max-w-5xl">
-              <div class="mt-16 sm:mt-20">{children}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+    <Container sx={{ mt: { xs: 8, sm: 16 } }}>
+      <Box sx={{ mt: { xs: 8, sm: 10 } }}>{children}</Box>
+    </Container>
   );
 }
 

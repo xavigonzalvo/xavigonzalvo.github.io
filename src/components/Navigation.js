@@ -1,7 +1,22 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
+import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 
 import { formatPagePath, AllSitePageFragment } from "./utils";
+import { frostedSx } from "./surfaces";
+
+const navItemSx = {
+  position: "relative",
+  display: "block",
+  px: 1.5,
+  py: 1,
+  fontSize: "0.875rem",
+  fontWeight: 500,
+  color: "text.primary",
+};
 
 export default function Navigation() {
   const data = useStaticQuery(graphql`
@@ -11,20 +26,28 @@ export default function Navigation() {
   `);
 
   return (
-    <nav class="pointer-events-auto hidden md:block">
-      <ul class="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
+    <Box component="nav" sx={{ pointerEvents: "auto", display: { xs: "none", md: "block" } }}>
+      <Box
+        component="ul"
+        sx={(t) => ({
+          display: "flex",
+          m: 0,
+          p: 0,
+          px: 1.5,
+          listStyle: "none",
+          borderRadius: 9999,
+          ...frostedSx(t),
+        })}
+      >
         {data.allSitePage.nodes.map((row) => (
-          <li>
-            <a
-              class="relative block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400"
-              href={row.path}
-            >
+          <Box component="li" key={row.path}>
+            <Link href={row.path} sx={navItemSx}>
               {formatPagePath(row.path)}
-            </a>
-          </li>
+            </Link>
+          </Box>
         ))}
-      </ul>
-    </nav>
+      </Box>
+    </Box>
   );
 }
 
@@ -36,63 +59,58 @@ export function DialogNavigation({ onClose }) {
   `);
 
   return (
-    <div>
-      <div
-        class="fixed inset-0 z-50 bg-zinc-800/40 backdrop-blur-sm dark:bg-black/80 opacity-100"
-        id="headlessui-popover-overlay-:r0:"
-        aria-hidden="true"
-        data-headlessui-state="open"
-      ></div>
-      <div
-        class="fixed inset-x-4 top-8 z-50 origin-top rounded-3xl bg-white p-8 ring-1 ring-zinc-900/5 dark:bg-zinc-900 dark:ring-zinc-800 opacity-100 scale-100"
-        id="headlessui-popover-panel-:r1:"
-        tabindex="-1"
-        data-headlessui-state="open"
+    <Box>
+      <Box
+        onClick={onClose}
+        aria-hidden
+        sx={(t) => ({
+          position: "fixed",
+          inset: 0,
+          zIndex: 50,
+          backdropFilter: "blur(4px)",
+          bgcolor: t.palette.mode === "dark" ? "rgba(0,0,0,0.8)" : "rgba(39,39,42,0.4)",
+        })}
+      />
+      <Box
+        sx={{
+          position: "fixed",
+          left: 16,
+          right: 16,
+          top: 32,
+          zIndex: 50,
+          transformOrigin: "top",
+          borderRadius: 6,
+          p: 4,
+          bgcolor: "background.paper",
+          boxShadow: (t) =>
+            `inset 0 0 0 1px ${
+              t.palette.mode === "dark" ? "#27272a" : "rgba(24,24,27,0.05)"
+            }`,
+        }}
       >
-        <div class="flex flex-row-reverse items-center justify-between">
-          <button
-            aria-label="Close menu"
-            class="-m-1 p-1"
-            type="button"
-            data-headlessui-state="open"
-            tabindex="0"
-            onClick={onClose}
-          >
-            <svg
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              class="h-6 w-6 text-zinc-500 dark:text-zinc-400"
-            >
-              <path
-                d="m17.25 6.75-10.5 10.5M6.75 6.75l10.5 10.5"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              ></path>
-            </svg>
-          </button>
-          <h2 class="text-sm font-medium text-zinc-600 dark:text-zinc-400">
+        <Box sx={{ display: "flex", flexDirection: "row-reverse", alignItems: "center", justifyContent: "space-between" }}>
+          <IconButton aria-label="Close menu" onClick={onClose} size="small" sx={{ color: "text.secondary" }}>
+            <CloseIcon fontSize="small" />
+          </IconButton>
+          <Box component="h2" sx={{ m: 0, fontSize: "0.875rem", fontWeight: 500, color: "text.secondary" }}>
             Navigation
-          </h2>
-        </div>
-        <nav class="mt-6">
-          <ul class="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
+          </Box>
+        </Box>
+        <Box component="nav" sx={{ mt: 3 }}>
+          <Box
+            component="ul"
+            sx={{ m: 0, p: 0, listStyle: "none", "& > li": { borderTop: 1, borderColor: "divider" }, "& > li:first-of-type": { borderTop: 0 } }}
+          >
             {data.allSitePage.nodes.map((row) => (
-              <li>
-                <a
-                  class="block py-2"
-                  data-headlessui-state="open"
-                  href={row.path}
-                >
+              <Box component="li" key={row.path}>
+                <Link href={row.path} sx={{ display: "block", py: 1, fontSize: "1rem", fontWeight: 500, color: "text.primary" }}>
                   {formatPagePath(row.path)}
-                </a>
-              </li>
+                </Link>
+              </Box>
             ))}
-          </ul>
-        </nav>
-      </div>
-    </div>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 }

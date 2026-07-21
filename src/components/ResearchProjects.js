@@ -1,5 +1,8 @@
 import * as React from "react";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import ResearchProjectCard from "./ResearchProjectCard";
+import Container from "./Container";
 
 function ResearchProjects() {
   const ttsData = {
@@ -64,27 +67,24 @@ function ResearchProjects() {
   };
 
   return (
-    <div class="sm:px-8 mt-24 md:mt-28">
-      <div class="mx-auto max-w-7xl lg:px-8">
-        <div class="relative px-4 sm:px-8 lg:px-12">
-          <div class="mx-auto max-w-2xl lg:max-w-5xl">
-            <header class="max-w-2xl mb-12">
-              <h2 class="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-                Research projects
-              </h2>
-              <p class="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-                My research spans across speech synthesis, automated machine learning, and large language models.
-              </p>
-            </header>
-            <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
-              <ResearchProjectCard {...ttsData} />
-              <ResearchProjectCard {...automlData} />
-              <ResearchProjectCard {...llmsData} />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Container sx={{ mt: { xs: 12, md: 14 } }}>
+      <Box component="header" sx={{ maxWidth: "42rem", mb: 6 }}>
+        <Typography
+          variant="h2"
+          sx={{ fontSize: { xs: "2.25rem", sm: "3rem" }, fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1, color: "text.primary" }}
+        >
+          Research projects
+        </Typography>
+        <Typography sx={{ mt: 3, fontSize: "1rem", color: "text.secondary" }}>
+          My research spans across speech synthesis, automated machine learning, and large language models.
+        </Typography>
+      </Box>
+      <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", lg: "repeat(3, 1fr)" }, gap: 4 }}>
+        <ResearchProjectCard {...ttsData} />
+        <ResearchProjectCard {...automlData} />
+        <ResearchProjectCard {...llmsData} />
+      </Box>
+    </Container>
   );
 }
 

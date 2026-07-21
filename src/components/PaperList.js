@@ -1,6 +1,10 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import { AiOutlineFilePdf } from "react-icons/ai";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Chip from "@mui/material/Chip";
+import Link from "@mui/material/Link";
+import PictureAsPdfOutlinedIcon from "@mui/icons-material/PictureAsPdfOutlined";
 
 const PaperList = () => {
   const data = useStaticQuery(graphql`
@@ -19,51 +23,86 @@ const PaperList = () => {
 
   return (
     <>
-      <h1 class="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
+      <Typography
+        variant="h1"
+        sx={{
+          fontSize: { xs: "2.25rem", sm: "3rem" },
+          fontWeight: 700,
+          letterSpacing: "-0.02em",
+          lineHeight: 1.1,
+          color: "text.primary",
+        }}
+      >
         Publications
-      </h1>
-      <ul class="mt-4 sm:mt-6">
-        {data.allPapersCsv.nodes.map((row) => (
-          <li key={row.id} class="hover:bg-gray-100 p-2 rounded-md">
-            <dl class="flex gap-x-2">
-              <dt class="sr-only">Year</dt>
-              <dd class="text-sm text-zinc-400 dark:text-zinc-500">
+      </Typography>
+
+      <Box component="ul" sx={{ listStyle: "none", m: 0, mt: { xs: 2, sm: 3 }, p: 0 }}>
+        {data.allPapersCsv.nodes.map((row, index) => {
+          const venue =
+            row.Conference ||
+            (row.URL && row.URL.includes("arxiv.org") ? "arXiv" : null);
+          return (
+            <Box
+              component="li"
+              key={index}
+              sx={{
+                display: "flex",
+                gap: 1,
+                p: 1,
+                borderRadius: 1.5,
+                transition: "background-color 150ms",
+                "&:hover": {
+                  bgcolor: (t) =>
+                    t.palette.mode === "dark" ? "rgba(39,39,42,0.5)" : "#f4f4f5",
+                },
+              }}
+            >
+              <Typography sx={{ fontSize: "0.875rem", color: "text.secondary", minWidth: "3ch" }}>
                 {row.Year}
-              </dd>
-              <div>
-                <dt class="sr-only">Title</dt>
-                <dd class="flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
+              </Typography>
+              <Box>
+                <Typography
+                  component="div"
+                  sx={{ fontSize: "0.875rem", fontWeight: 500, color: "text.primary" }}
+                >
                   {row.URL ? (
-                    <a href={row.URL}>
-                      <span>
-                        <AiOutlineFilePdf
-                          className="mr-2"
-                          style={{ display: "inline" }}
-                        />
-                        {row.Title}
-                      </span>
-                    </a>
+                    <Link
+                      href={row.URL}
+                      sx={{ display: "inline-flex", alignItems: "center", color: "inherit" }}
+                    >
+                      <PictureAsPdfOutlinedIcon sx={{ fontSize: 18, mr: 1 }} />
+                      {row.Title}
+                    </Link>
                   ) : (
-                    <div class="text-zinc-500">{row.Title}</div>
+                    <Box component="span" sx={{ color: "text.secondary" }}>
+                      {row.Title}
+                    </Box>
                   )}
-                </dd>
-                <dt class="sr-only">Authors</dt>
-                <dd class="w-full text-xs text-zinc-500 dark:text-zinc-400">
+                </Typography>
+                <Typography sx={{ fontSize: "0.75rem", color: "text.secondary" }}>
                   {row.Authors}
-                </dd>
-                <dt class="sr-only">Conference</dt>
-                <dd class="text-xs text-zinc-500 dark:text-zinc-400">
-                  {(row.Conference || (row.URL && row.URL.includes('arxiv.org') ? 'arXiv' : '')) && (
-                    <span class="inline-block bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 px-2 py-0.5 rounded-md text-xs font-medium">
-                      {row.Conference || 'arXiv'}
-                    </span>
-                  )}
-                </dd>
-              </div>
-            </dl>
-          </li>
-        ))}
-      </ul>
+                </Typography>
+                {venue && (
+                  <Chip
+                    label={venue}
+                    size="small"
+                    sx={{
+                      mt: 0.5,
+                      height: "auto",
+                      fontSize: "0.75rem",
+                      fontWeight: 500,
+                      borderRadius: 1.5,
+                      color: (t) => (t.palette.mode === "dark" ? "#d4d4d8" : "#3f3f46"),
+                      bgcolor: (t) => (t.palette.mode === "dark" ? "#27272a" : "#f4f4f5"),
+                      "& .MuiChip-label": { px: 1, py: 0.25 },
+                    }}
+                  />
+                )}
+              </Box>
+            </Box>
+          );
+        })}
+      </Box>
     </>
   );
 };

@@ -1,5 +1,7 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 const MarkdownContent = ({ isH1, fileName }) => {
   const data = useStaticQuery(graphql`
@@ -25,33 +27,43 @@ const MarkdownContent = ({ isH1, fileName }) => {
   });
 
   if (!content) {
-    return <p>Markdown file not found.</p>;
+    return <Typography>Markdown file not found.</Typography>;
   }
 
-  const h1 = (
-    <h1 class="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
+  const heading = isH1 ? (
+    <Typography
+      variant="h1"
+      sx={{
+        fontSize: { xs: "2.25rem", sm: "3rem" },
+        fontWeight: 700,
+        letterSpacing: "-0.02em",
+        lineHeight: 1.1,
+        color: "text.primary",
+      }}
+    >
       {content.node.frontmatter.title}
-    </h1>
-  );
-
-  const h2 = (
-    <h2 class="text-md font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-md">
+    </Typography>
+  ) : (
+    <Typography
+      variant="h2"
+      sx={{ fontSize: "1rem", fontWeight: 700, letterSpacing: "-0.02em", color: "text.primary" }}
+    >
       {content.node.frontmatter.title}
-    </h2>
+    </Typography>
   );
 
   const paragraphs = content.node.html.split(/\r?\n/);
   return (
-    <section>
-      {isH1 ? h1 : h2}
+    <Box component="section">
+      {heading}
       {paragraphs.map((paragraph, index) => (
-        <div
+        <Box
           key={index}
-          className="mt-6 text-base text-zinc-600 dark:text-zinc-400"
+          sx={{ mt: 3, fontSize: "1rem", color: "text.secondary", "& a": { color: "inherit" } }}
           dangerouslySetInnerHTML={{ __html: paragraph }}
         />
       ))}
-    </section>
+    </Box>
   );
 };
 

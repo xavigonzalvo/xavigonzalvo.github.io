@@ -15,6 +15,7 @@ module.exports = {
     },
   },
   plugins: [
+    `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -39,7 +40,6 @@ module.exports = {
         path: `${__dirname}/src/content`,
       },
     },
-    `gatsby-plugin-postcss`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,
     {

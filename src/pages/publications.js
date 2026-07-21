@@ -1,4 +1,5 @@
 import * as React from "react";
+import Box from "@mui/material/Box";
 
 import Layout from "../components/Layout";
 import PaperList from "../components/PaperList";
@@ -10,16 +11,15 @@ import SEO from "../components/SEO";
 function Main() {
   return (
     <Layout>
-      <div class="relative">
+      <Box sx={{ position: "relative" }}>
         <PageHeader />
-        <div style={{ height: "var(--content-offset);" }}></div>
-        <main>
+        <Box component="main">
           <Content>
             <PaperList />
           </Content>
-        </main>
+        </Box>
         <Footer />
-      </div>
+      </Box>
     </Layout>
   );
 }

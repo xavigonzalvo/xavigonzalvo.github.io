@@ -1,5 +1,9 @@
 import * as React from "react";
 import { useStaticQuery, graphql } from "gatsby";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Link from "@mui/material/Link";
+
 import MarkdownContent from "../components/MarkdownContent";
 import PageHeader from "../components/PageHeader";
 import Layout from "../components/Layout";
@@ -9,108 +13,89 @@ import ScholarCard from "../components/ScholarCard";
 import ProjectCard from "../components/ProjectCard";
 import SEO from "../components/SEO";
 
-function About({ children }) {
+const SOCIALS = [
+  {
+    label: "Follow on Twitter",
+    href: "https://twitter.com/xavigonzalvo",
+    path: "M20.055 7.983c.011.174.011.347.011.523 0 5.338-3.92 11.494-11.09 11.494v-.003A10.755 10.755 0 0 1 3 18.186c.308.038.618.057.928.058a7.655 7.655 0 0 0 4.841-1.733c-1.668-.032-3.13-1.16-3.642-2.805a3.753 3.753 0 0 0 1.76-.07C5.07 13.256 3.76 11.6 3.76 9.676v-.05a3.77 3.77 0 0 0 1.77.505C3.816 8.945 3.288 6.583 4.322 4.737c1.98 2.524 4.9 4.058 8.034 4.22a4.137 4.137 0 0 1 1.128-3.86A3.807 3.807 0 0 1 19 5.274a7.657 7.657 0 0 0 2.475-.98c-.29.934-.9 1.729-1.713 2.233A7.54 7.54 0 0 0 22 5.89a8.084 8.084 0 0 1-1.945 2.093Z",
+  },
+  {
+    label: "Follow on GitHub",
+    href: "https://github.com/xavigonzalvo",
+    path: "M12 2C6.475 2 2 6.588 2 12.253c0 4.537 2.862 8.369 6.838 9.727.5.09.687-.218.687-.487 0-.243-.013-1.05-.013-1.91C7 20.059 6.35 18.957 6.15 18.38c-.113-.295-.6-1.205-1.025-1.448-.35-.192-.85-.667-.013-.68.788-.012 1.35.744 1.538 1.051.9 1.551 2.338 1.116 2.912.846.088-.666.35-1.115.638-1.371-2.225-.256-4.55-1.14-4.55-5.062 0-1.115.387-2.038 1.025-2.756-.1-.256-.45-1.307.1-2.717 0 0 .837-.269 2.75 1.051.8-.23 1.65-.346 2.5-.346.85 0 1.7.115 2.5.346 1.912-1.333 2.75-1.05 2.75-1.05.55 1.409.2 2.46.1 2.716.637.718 1.025 1.628 1.025 2.756 0 3.934-2.337 4.806-4.562 5.062.362.32.675.936.675 1.897 0 1.371-.013 2.473-.013 2.82 0 .268.188.589.688.486a10.039 10.039 0 0 0 4.932-3.74A10.447 10.447 0 0 0 22 12.253C22 6.588 17.525 2 12 2Z",
+  },
+  {
+    label: "Follow on LinkedIn",
+    href: "https://linkedin.com/in/xavigonzalvo",
+    path: "M18.335 18.339H15.67v-4.177c0-.996-.02-2.278-1.39-2.278-1.389 0-1.601 1.084-1.601 2.205v4.25h-2.666V9.75h2.56v1.17h.035c.358-.674 1.228-1.387 2.528-1.387 2.7 0 3.2 1.778 3.2 4.091v4.715zM7.003 8.575a1.546 1.546 0 01-1.548-1.549 1.548 1.548 0 111.547 1.549zm1.336 9.764H5.666V9.75H8.34v8.589zM19.67 3H4.329C3.593 3 3 3.58 3 4.297v15.406C3 20.42 3.594 21 4.328 21h15.338C20.4 21 21 20.42 21 19.703V4.297C21 3.58 20.4 3 19.666 3h.003z",
+  },
+  {
+    label: "View on Google Scholar",
+    href: "https://scholar.google.com/citations?hl=en&user=nThSlSwAAAAJ",
+    path: "M12 24a7 7 0 110-14 7 7 0 010 14zm0-24L0 9.5l4.838 3.94A8 8 0 0112 9a8 8 0 017.162 4.44L24 9.5z",
+  },
+];
+
+function SocialLink({ label, href, path }) {
   return (
-    <div class="sm:px-8 mt-16 sm:mt-32">
-      <div class="mx-auto max-w-7xl lg:px-8">
-        <div class="relative px-4 sm:px-8 lg:px-12">
-          <div class="mx-auto max-w-2xl lg:max-w-5xl">
-            <div class="max-w-2xl">
-              {children}
-              <div class="mt-6 flex gap-6">
-                <a
-                  class="group -m-1 p-1"
-                  aria-label="Follow on Twitter"
-                  href="https://twitter.com/xavigonzalvo"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    class="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300"
-                  >
-                    <path d="M20.055 7.983c.011.174.011.347.011.523 0 5.338-3.92 11.494-11.09 11.494v-.003A10.755 10.755 0 0 1 3 18.186c.308.038.618.057.928.058a7.655 7.655 0 0 0 4.841-1.733c-1.668-.032-3.13-1.16-3.642-2.805a3.753 3.753 0 0 0 1.76-.07C5.07 13.256 3.76 11.6 3.76 9.676v-.05a3.77 3.77 0 0 0 1.77.505C3.816 8.945 3.288 6.583 4.322 4.737c1.98 2.524 4.9 4.058 8.034 4.22a4.137 4.137 0 0 1 1.128-3.86A3.807 3.807 0 0 1 19 5.274a7.657 7.657 0 0 0 2.475-.98c-.29.934-.9 1.729-1.713 2.233A7.54 7.54 0 0 0 22 5.89a8.084 8.084 0 0 1-1.945 2.093Z"></path>
-                  </svg>
-                </a>
-                {/* <a
-                  class="group -m-1 p-1"
-                  aria-label="Follow on Instagram"
-                  href="https://instagram.com"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    class="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300"
-                  >
-                    <path d="M12 3c-2.444 0-2.75.01-3.71.054-.959.044-1.613.196-2.185.418A4.412 4.412 0 0 0 4.51 4.511c-.5.5-.809 1.002-1.039 1.594-.222.572-.374 1.226-.418 2.184C3.01 9.25 3 9.556 3 12s.01 2.75.054 3.71c.044.959.196 1.613.418 2.185.23.592.538 1.094 1.039 1.595.5.5 1.002.808 1.594 1.038.572.222 1.226.374 2.184.418C9.25 20.99 9.556 21 12 21s2.75-.01 3.71-.054c.959-.044 1.613-.196 2.185-.419a4.412 4.412 0 0 0 1.595-1.038c.5-.5.808-1.002 1.038-1.594.222-.572.374-1.226.418-2.184.044-.96.054-1.267.054-3.711s-.01-2.75-.054-3.71c-.044-.959-.196-1.613-.419-2.185A4.412 4.412 0 0 0 19.49 4.51c-.5-.5-1.002-.809-1.594-1.039-.572-.222-1.226-.374-2.184-.418C14.75 3.01 14.444 3 12 3Zm0 1.622c2.403 0 2.688.009 3.637.052.877.04 1.354.187 1.67.31.421.163.72.358 1.036.673.315.315.51.615.673 1.035.123.317.27.794.31 1.671.043.95.052 1.234.052 3.637s-.009 2.688-.052 3.637c-.04.877-.187 1.354-.31 1.67-.163.421-.358.72-.673 1.036a2.79 2.79 0 0 1-1.035.673c-.317.123-.794.27-1.671.31-.95.043-1.234.052-3.637.052s-2.688-.009-3.637-.052c-.877-.04-1.354-.187-1.67-.31a2.789 2.789 0 0 1-1.036-.673 2.79 2.79 0 0 1-.673-1.035c-.123-.317-.27-.794-.31-1.671-.043-.95-.052-1.234-.052-3.637s.009-2.688.052-3.637c.04-.877.187-1.354.31-1.67.163-.421.358-.72.673-1.036.315-.315.615-.51 1.035-.673.317-.123.794-.27 1.671-.31.95-.043 1.234-.052 3.637-.052Z"></path>
-                    <path d="M12 15a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm0-7.622a4.622 4.622 0 1 0 0 9.244 4.622 4.622 0 0 0 0-9.244Zm5.884-.182a1.08 1.08 0 1 1-2.16 0 1.08 1.08 0 0 1 2.16 0Z"></path>
-                  </svg>
-                </a> */}
-                <a
-                  class="group -m-1 p-1"
-                  aria-label="Follow on GitHub"
-                  href="https://github.com/xavigonzalvo"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    class="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M12 2C6.475 2 2 6.588 2 12.253c0 4.537 2.862 8.369 6.838 9.727.5.09.687-.218.687-.487 0-.243-.013-1.05-.013-1.91C7 20.059 6.35 18.957 6.15 18.38c-.113-.295-.6-1.205-1.025-1.448-.35-.192-.85-.667-.013-.68.788-.012 1.35.744 1.538 1.051.9 1.551 2.338 1.116 2.912.846.088-.666.35-1.115.638-1.371-2.225-.256-4.55-1.14-4.55-5.062 0-1.115.387-2.038 1.025-2.756-.1-.256-.45-1.307.1-2.717 0 0 .837-.269 2.75 1.051.8-.23 1.65-.346 2.5-.346.85 0 1.7.115 2.5.346 1.912-1.333 2.75-1.05 2.75-1.05.55 1.409.2 2.46.1 2.716.637.718 1.025 1.628 1.025 2.756 0 3.934-2.337 4.806-4.562 5.062.362.32.675.936.675 1.897 0 1.371-.013 2.473-.013 2.82 0 .268.188.589.688.486a10.039 10.039 0 0 0 4.932-3.74A10.447 10.447 0 0 0 22 12.253C22 6.588 17.525 2 12 2Z"
-                    ></path>
-                  </svg>
-                </a>
-                <a
-                  class="group -m-1 p-1"
-                  aria-label="Follow on LinkedIn"
-                  href="https://linkedin.com/in/xavigonzalvo"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    class="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300"
-                  >
-                    <path d="M18.335 18.339H15.67v-4.177c0-.996-.02-2.278-1.39-2.278-1.389 0-1.601 1.084-1.601 2.205v4.25h-2.666V9.75h2.56v1.17h.035c.358-.674 1.228-1.387 2.528-1.387 2.7 0 3.2 1.778 3.2 4.091v4.715zM7.003 8.575a1.546 1.546 0 01-1.548-1.549 1.548 1.548 0 111.547 1.549zm1.336 9.764H5.666V9.75H8.34v8.589zM19.67 3H4.329C3.593 3 3 3.58 3 4.297v15.406C3 20.42 3.594 21 4.328 21h15.338C20.4 21 21 20.42 21 19.703V4.297C21 3.58 20.4 3 19.666 3h.003z"></path>
-                  </svg>
-                </a>
-                <a
-                  class="group -m-1 p-1"
-                  aria-label="View on Google Scholar"
-                  href="https://scholar.google.com/citations?hl=en&user=nThSlSwAAAAJ"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    class="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300"
-                  >
-                    <path d="M12 24a7 7 0 110-14 7 7 0 010 14zm0-24L0 9.5l4.838 3.94A8 8 0 0112 9a8 8 0 017.162 4.44L24 9.5z"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Link
+      href={href}
+      aria-label={label}
+      sx={{ p: 0.5, "&:hover svg": { fill: (t) => (t.palette.mode === "dark" ? "#d4d4d8" : "#52525b") } }}
+    >
+      <Box component="svg" viewBox="0 0 24 24" aria-hidden="true" sx={{ height: 24, width: 24, fill: "text.secondary", transition: "fill 150ms" }}>
+        <path d={path} />
+      </Box>
+    </Link>
   );
 }
 
-function Content({ children, rightSide }) {
+function About({ children }) {
   return (
-    <div class="sm:px-8 mt-24 md:mt-28">
-      <div class="mx-auto max-w-7xl lg:px-8">
-        <div class="relative px-4 sm:px-8 lg:px-12">
-          <div class="mx-auto max-w-2xl lg:max-w-5xl">
-            <div class="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
-              <div class="flex flex-col gap-16">{children}</div>
-              <div class="space-y-10 lg:pl-16 xl:pl-24">{rightSide}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Box sx={{ mt: { xs: 8, sm: 16 }, px: { sm: 4 } }}>
+      <Box sx={{ mx: "auto", maxWidth: "80rem", px: { lg: 4 } }}>
+        <Box sx={{ position: "relative", px: { xs: 2, sm: 4, lg: 6 } }}>
+          <Box sx={{ mx: "auto", maxWidth: { xs: "42rem", lg: "64rem" } }}>
+            <Box sx={{ maxWidth: "42rem" }}>
+              {children}
+              <Box sx={{ mt: 3, display: "flex", gap: 3 }}>
+                {SOCIALS.map((s) => (
+                  <SocialLink key={s.label} {...s} />
+                ))}
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+  );
+}
+
+function TwoColumn({ children, rightSide }) {
+  return (
+    <Box sx={{ mt: { xs: 12, md: 14 }, px: { sm: 4 } }}>
+      <Box sx={{ mx: "auto", maxWidth: "80rem", px: { lg: 4 } }}>
+        <Box sx={{ position: "relative", px: { xs: 2, sm: 4, lg: 6 } }}>
+          <Box sx={{ mx: "auto", maxWidth: { xs: "42rem", lg: "64rem" } }}>
+            <Box
+              sx={{
+                mx: "auto",
+                maxWidth: { xs: "36rem", lg: "none" },
+                display: "grid",
+                gridTemplateColumns: { xs: "1fr", lg: "1fr 1fr" },
+                rowGap: 10,
+                columnGap: 0,
+              }}
+            >
+              <Box sx={{ display: "flex", flexDirection: "column", gap: 8 }}>{children}</Box>
+              <Box sx={{ display: "flex", flexDirection: "column", gap: 5, pl: { lg: 8, xl: 12 } }}>
+                {rightSide}
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 }
 
@@ -131,51 +116,61 @@ function ProjectList() {
   `);
 
   return (
-    <div class="sm:px-8 mt-16 sm:mt-20">
-      <div class="mx-auto max-w-7xl lg:px-8">
-        <div class="relative px-4 sm:px-8 lg:px-12">
-          <div class="mx-auto max-w-2xl lg:max-w-5xl">
-            <header class="max-w-2xl">
-              <h1 class="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-                Interesting projects
-              </h1>
-              <p class="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-                These are some of the projects I've worked during my career.
-              </p>
-            </header>
-            <div class="mt-16 sm:mt-20">
-              <ul
-                role="list"
-                class="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
+    <Box sx={{ mt: { xs: 8, sm: 10 }, px: { sm: 4 } }}>
+      <Box sx={{ mx: "auto", maxWidth: "80rem", px: { lg: 4 } }}>
+        <Box sx={{ position: "relative", px: { xs: 2, sm: 4, lg: 6 } }}>
+          <Box sx={{ mx: "auto", maxWidth: { xs: "42rem", lg: "64rem" } }}>
+            <Box component="header" sx={{ maxWidth: "42rem" }}>
+              <Typography
+                variant="h1"
+                sx={{ fontSize: { xs: "2.25rem", sm: "3rem" }, fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1, color: "text.primary" }}
               >
-                {data.allProjectsCsv.nodes.map((row) => (
-                  <ProjectCard
-                    name={row.project}
-                    description={row.description}
-                    url={row.url}
-                    icon={row.icon}
-                  />
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+                Interesting projects
+              </Typography>
+              <Typography sx={{ mt: 3, fontSize: "1rem", color: "text.secondary" }}>
+                These are some of the projects I've worked during my career.
+              </Typography>
+            </Box>
+            <Box
+              component="ul"
+              sx={{
+                listStyle: "none",
+                m: 0,
+                mt: { xs: 8, sm: 10 },
+                p: 0,
+                display: "grid",
+                gridTemplateColumns: { xs: "1fr", sm: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" },
+                columnGap: 6,
+                rowGap: 8,
+              }}
+            >
+              {data.allProjectsCsv.nodes.map((row, index) => (
+                <ProjectCard
+                  key={index}
+                  name={row.project}
+                  description={row.description}
+                  url={row.url}
+                  icon={row.icon}
+                />
+              ))}
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 }
 
 const IndexPage = () => {
   return (
     <Layout>
-      <div class="relative">
+      <Box sx={{ position: "relative" }}>
         <PageHeader />
-        <div style={{ height: "var(--content-offset);" }}></div>
-        <main>
+        <Box component="main">
           <About>
             <MarkdownContent isH1={true} fileName="intro.md" />
           </About>
-          <Content
+          <TwoColumn
             rightSide={
               <>
                 <MiniResume />
@@ -184,11 +179,11 @@ const IndexPage = () => {
             }
           >
             <MarkdownContent isH1={false} fileName="about.md" />
-          </Content>
+          </TwoColumn>
           <ProjectList />
-        </main>
+        </Box>
         <Footer />
-      </div>
+      </Box>
     </Layout>
   );
 };

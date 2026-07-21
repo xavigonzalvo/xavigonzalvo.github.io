@@ -1,55 +1,58 @@
 import * as React from "react";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Link from "@mui/material/Link";
+import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 
 function ResearchProjectCard({ title, summary, papers }) {
   return (
-    <div class="group relative flex flex-col p-6 bg-white dark:bg-zinc-800/50 rounded-2xl border border-zinc-100 dark:border-zinc-700/40 shadow-sm hover:shadow-md transition-shadow">
-      <h3 class="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mb-3">
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        p: 3,
+        borderRadius: "16px",
+        border: 1,
+        borderColor: "divider",
+        bgcolor: (t) => (t.palette.mode === "dark" ? "rgba(39,39,42,0.5)" : "#fff"),
+        boxShadow: "0 1px 2px 0 rgba(0,0,0,0.05)",
+        transition: "box-shadow 150ms",
+        "&:hover": { boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1)" },
+      }}
+    >
+      <Typography component="h3" sx={{ fontSize: "1.25rem", fontWeight: 600, color: "text.primary", mb: 1.5 }}>
         {title}
-      </h3>
-      <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
+      </Typography>
+      <Typography sx={{ fontSize: "0.875rem", color: "text.secondary", mb: 2 }}>
         {summary}
-      </p>
-      <div class="space-y-3">
+      </Typography>
+      <Box sx={{ display: "flex", flexDirection: "column", gap: 1.5 }}>
         {papers.map((paper, idx) => (
-          <div key={idx} class="flex items-start gap-3">
-            <div class="flex-shrink-0 mt-1">
-              <svg
-                class="h-5 w-5 text-teal-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                />
-              </svg>
-            </div>
-            <div class="flex-1 min-w-0">
+          <Box key={idx} sx={{ display: "flex", alignItems: "flex-start", gap: 1.5 }}>
+            <DescriptionOutlinedIcon sx={{ flexShrink: 0, mt: 0.25, fontSize: 20, color: "primary.main" }} />
+            <Box sx={{ flex: 1, minWidth: 0 }}>
               {paper.url ? (
-                <a
+                <Link
                   href={paper.url}
-                  class="text-sm font-medium text-zinc-800 dark:text-zinc-100 hover:text-teal-500 dark:hover:text-teal-400 transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
+                  sx={{ fontSize: "0.875rem", fontWeight: 500, color: "text.primary" }}
                 >
                   {paper.title}
-                </a>
+                </Link>
               ) : (
-                <span class="text-sm font-medium text-zinc-800 dark:text-zinc-100">
+                <Typography component="span" sx={{ fontSize: "0.875rem", fontWeight: 500, color: "text.primary" }}>
                   {paper.title}
-                </span>
+                </Typography>
               )}
-              <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+              <Typography sx={{ fontSize: "0.75rem", color: "text.secondary", mt: 0.5 }}>
                 {paper.description}
-              </p>
-            </div>
-          </div>
+              </Typography>
+            </Box>
+          </Box>
         ))}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }
 

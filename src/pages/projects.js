@@ -1,4 +1,5 @@
 import * as React from "react";
+import Box from "@mui/material/Box";
 import Layout from "../components/Layout";
 import Footer from "../components/Footer";
 import PageHeader from "../components/PageHeader";
@@ -8,14 +9,13 @@ import SEO from "../components/SEO";
 function Projects() {
   return (
     <Layout>
-      <div class="relative">
+      <Box sx={{ position: "relative" }}>
         <PageHeader />
-        <div style={{ height: "var(--content-offset);" }}></div>
-        <main>
+        <Box component="main">
           <ResearchProjects />
-        </main>
+        </Box>
         <Footer />
-      </div>
+      </Box>
     </Layout>
   );
 }
