@@ -1,7 +1,6 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 
-import StructuredData from "./StructuredData";
 import { zinc } from "../theme";
 
 // Visual shell: a full-height page background with a fixed, centered "panel"
@@ -18,8 +17,6 @@ function Layout({ children }) {
         bgcolor: "background.default",
       }}
     >
-      <StructuredData />
-
       {/* Fixed centered panel behind everything */}
       <Box
         aria-hidden

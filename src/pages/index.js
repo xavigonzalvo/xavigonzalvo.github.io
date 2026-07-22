@@ -319,8 +319,9 @@ export default IndexPage;
 
 export const Head = () => (
   <Seo
-    title="Xavi Gonzalvo, Machine Learning Researcher"
+    title="Xavi Gonzalvo · Machine Learning Researcher"
     description="Xavi Gonzalvo, Research Scientist at Google in New York, leading a team on LLM efficiency and LLM safety. Previously led Google's AutoML team. PhD in Electrical Engineering."
     pathname="/"
+    noTemplate
   />
 );

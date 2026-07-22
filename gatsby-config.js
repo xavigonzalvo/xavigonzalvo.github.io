@@ -3,10 +3,10 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `Xavi Gonzalvo - Machine Learning Researcher`,
-    description: `Machine Learning Researcher at Google, specializing in LLMs, AutoML, and neural architecture search. PhD in Electrical Engineering.`,
+    title: `Xavi Gonzalvo · Machine Learning Researcher`,
+    description: `Xavi Gonzalvo, Research Scientist at Google in New York, leading a team on LLM efficiency and LLM safety. Previously led Google's AutoML team. PhD in Electrical Engineering.`,
     author: `Xavi Gonzalvo`,
-    siteUrl: `https://xavigonzalvo.github.io`,
+    siteUrl: `https://xavigonzalvo.com`,
     social: {
       twitter: `@xavigonzalvo`,
       github: `xavigonzalvo`,
@@ -39,7 +39,6 @@ module.exports = {
         path: `${__dirname}/src/content`,
       },
     },
-    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-manifest`,
