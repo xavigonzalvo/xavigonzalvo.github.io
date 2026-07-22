@@ -250,7 +250,7 @@ const IndexPage = () => {
                       size="small"
                       sx={{ "&:hover svg": { fill: (t) => (t.palette.mode === "dark" ? "#d4d4d8" : "#52525b") } }}
                     >
-                      <Box component="svg" viewBox="0 0 24 24" aria-hidden="true" sx={{ height: 20, width: 20, fill: "text.secondary", transition: "fill 150ms" }}>
+                      <Box component="svg" viewBox="0 0 24 24" aria-hidden="true" sx={{ height: 20, width: 20, fill: (t) => t.palette.text.secondary, transition: "fill 150ms" }}>
                         <path d={s.path} />
                       </Box>
                     </IconButton>
