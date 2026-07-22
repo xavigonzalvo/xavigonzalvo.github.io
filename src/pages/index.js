@@ -12,7 +12,7 @@ import NorthEastIcon from "@mui/icons-material/NorthEast";
 
 import Layout from "../components/Layout";
 import PageHeader from "../components/PageHeader";
-import SEO from "../components/SEO";
+import Seo from "../components/Seo";
 
 const CV_URL =
   "https://drive.google.com/file/d/1F0R1AsV-4Jb8eJAZdBULHl6eYcHFazOQ/view?usp=share_link";
@@ -273,7 +273,7 @@ const IndexPage = () => {
 export default IndexPage;
 
 export const Head = () => (
-  <SEO
+  <Seo
     title="Xavi Gonzalvo, Machine Learning Researcher"
     description="Xavi Gonzalvo, Research Scientist at Google in New York, leading a team on LLM efficiency and LLM safety. Previously led Google's AutoML team. PhD in Electrical Engineering."
     pathname="/"

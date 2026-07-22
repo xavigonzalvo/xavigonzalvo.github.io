@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Link } from "gatsby"
-import SEO from "../components/SEO"
+import Seo from "../components/Seo"
 
 const pageStyles = {
   color: "#232129",
@@ -48,7 +48,7 @@ const NotFoundPage = () => {
 export default NotFoundPage
 
 export const Head = () => (
-  <SEO
+  <Seo
     title="Page Not Found"
     description="The page you're looking for doesn't exist."
   />

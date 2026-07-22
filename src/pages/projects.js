@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 import Footer from "../components/Footer";
 import PageHeader from "../components/PageHeader";
 import ResearchProjects from "../components/ResearchProjects";
-import SEO from "../components/SEO";
+import Seo from "../components/Seo";
 
 function Projects() {
   return (
@@ -23,7 +23,7 @@ function Projects() {
 export default Projects;
 
 export const Head = () => (
-  <SEO
+  <Seo
     title="Projects"
     description="Research and development projects in machine learning, including work on AutoML, LLMs, and speech synthesis technologies."
     pathname="/projects/"

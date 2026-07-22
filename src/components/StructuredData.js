@@ -35,7 +35,7 @@ function StructuredData() {
     },
     url: site.siteMetadata.siteUrl,
     sameAs: [
-      `https://twitter.com/${site.siteMetadata.social.twitter}`,
+      `https://twitter.com/${site.siteMetadata.social.twitter.replace(/^@/, "")}`,
       `https://github.com/${site.siteMetadata.social.github}`,
       `https://linkedin.com/in/${site.siteMetadata.social.linkedin}`,
       `https://scholar.google.com/citations?user=${site.siteMetadata.social.scholar}`,

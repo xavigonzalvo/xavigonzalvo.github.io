@@ -24,7 +24,6 @@ module.exports = {
       },
     },
     `gatsby-transformer-csv`,
-    "gatsby-plugin-mdx",
     {
       resolve: "gatsby-source-filesystem",
       options: {

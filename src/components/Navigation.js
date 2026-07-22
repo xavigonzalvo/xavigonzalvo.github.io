@@ -5,7 +5,7 @@ import Link from "@mui/material/Link";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 
-import { formatPagePath, AllSitePageFragment } from "./utils";
+import { formatPagePath } from "./utils";
 import { frostedSx } from "./surfaces";
 
 const navItemSx = {

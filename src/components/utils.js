@@ -12,6 +12,8 @@ export default function getIcon(name) {
       return pattsIcon;
     case "salle":
       return salleIcon;
+    default:
+      return undefined;
   }
 }
 

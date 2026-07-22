@@ -6,7 +6,7 @@ import PageHeader from "../components/PageHeader";
 import Footer from "../components/Footer";
 import MarkdownContent from "../components/MarkdownContent";
 import MiniResume from "../components/MiniResume";
-import SEO from "../components/SEO";
+import Seo from "../components/Seo";
 
 function About() {
   return (
@@ -48,7 +48,7 @@ function About() {
 export default About;
 
 export const Head = () => (
-  <SEO
+  <Seo
     title="About"
     description="About Xavi Gonzalvo: career from La Salle and Phonetic Arts to leading research teams at Google, plus education and a downloadable CV."
     pathname="/about/"
