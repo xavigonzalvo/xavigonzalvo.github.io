@@ -12,7 +12,9 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "deploy": "npm run build && wrangler deploy",
+    "preview": "npm run build && wrangler dev"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -28,5 +30,8 @@
     "gatsby-transformer-remark": "^6.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.113.0"
   }
 }
