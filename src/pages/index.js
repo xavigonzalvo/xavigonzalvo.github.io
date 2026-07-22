@@ -21,8 +21,7 @@ const SCHOLAR_PROFILE =
 
 const FOCUS = [
   "LLM efficiency",
-  "Learning without training",
-  "In-context learning",
+  "LLM safety",
   "AutoML",
   "Neural architecture search",
   "Speech synthesis",
@@ -51,13 +50,15 @@ const SOCIALS = [
   },
 ];
 
-function MiniMetric({ value, label }) {
+function Metric({ value, label }) {
   return (
-    <Box component="span" sx={{ fontSize: "0.75rem", color: "text.secondary", whiteSpace: "nowrap" }}>
-      <Box component="span" sx={{ fontWeight: 600, color: "text.primary", fontVariantNumeric: "tabular-nums" }}>
+    <Box>
+      <Typography sx={{ fontSize: "1.15rem", fontWeight: 700, lineHeight: 1.1, color: "text.primary", fontVariantNumeric: "tabular-nums" }}>
         {value.toLocaleString()}
-      </Box>{" "}
-      {label}
+      </Typography>
+      <Typography sx={{ mt: 0.25, fontSize: "0.68rem", color: "text.secondary" }}>
+        {label}
+      </Typography>
     </Box>
   );
 }
@@ -115,27 +116,30 @@ function CredibilityCard({ scholar }) {
 
       <Divider sx={{ my: 2.5 }} />
       <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-        <FactRow label="Now">Research Scientist, Google — New York</FactRow>
+        <FactRow label="Now">Research Scientist and team lead, Google, New York</FactRow>
         <FactRow label="PhD">Electrical Engineering, Universitat Ramon Llull (2010)</FactRow>
       </Box>
 
       {hasStats && (
         <>
           <Divider sx={{ my: 2.5 }} />
-          <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 1 }}>
-            <Box sx={{ display: "flex", flexWrap: "wrap", columnGap: 1.5, rowGap: 0.5 }}>
-              <MiniMetric value={scholar.citationsAll} label="citations" />
-              <MiniMetric value={scholar.hIndexAll} label="h-index" />
-              <MiniMetric value={scholar.i10IndexAll} label="i10" />
-            </Box>
+          <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <Typography sx={{ fontSize: "0.7rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em", color: "text.secondary" }}>
+              Google Scholar
+            </Typography>
             <Link
               href={scholar.profileUrl}
               target="_blank"
               rel="noreferrer"
               sx={{ display: "inline-flex", alignItems: "center", fontSize: "0.72rem", color: "text.secondary" }}
             >
-              Google Scholar <NorthEastIcon sx={{ fontSize: 12, ml: 0.4 }} />
+              Profile <NorthEastIcon sx={{ fontSize: 12, ml: 0.4 }} />
             </Link>
+          </Box>
+          <Box sx={{ mt: 1.5, display: "flex", gap: 4 }}>
+            <Metric value={scholar.citationsAll} label="Citations" />
+            <Metric value={scholar.hIndexAll} label="h-index" />
+            <Metric value={scholar.i10IndexAll} label="i10-index" />
           </Box>
         </>
       )}
@@ -194,13 +198,14 @@ const IndexPage = () => {
                 Electrical Engineer & Machine Learning Researcher
               </Typography>
               <Typography sx={{ mt: 3, fontSize: "0.95rem", lineHeight: 1.65, color: "text.secondary", maxWidth: "34rem" }}>
-                Research Scientist at Google in New York, working on core Machine
-                Learning algorithms. I'm currently focused on LLM efficiency and{" "}
-                <Box component="em" sx={{ fontStyle: "italic", color: "text.primary" }}>
-                  learning without training
-                </Box>{" "}
-                — in-context learning dynamics, transmuting prompts into weights,
-                and long-context optimization. Previously led Google's AutoML team.
+                Research Scientist at Google in New York, where I lead a team working
+                on{" "}
+                <Box component="span" sx={{ fontWeight: 600, color: "text.primary" }}>
+                  LLM efficiency and LLM safety
+                </Box>
+                . Previously I led Google's AutoML team, working on machine learning
+                efficiency, ensembles, multi source adaptation, and neural architecture
+                search.
               </Typography>
 
               <Box sx={{ mt: 4, display: "flex", flexWrap: "wrap", alignItems: "center", gap: 1.5 }}>
@@ -226,8 +231,8 @@ const IndexPage = () => {
                     py: 1,
                     fontSize: "0.875rem",
                     color: "text.primary",
-                    borderColor: "divider",
-                    "&:hover": { borderColor: "text.secondary", bgcolor: "transparent" },
+                    borderColor: (t) => (t.palette.mode === "dark" ? "rgba(255,255,255,0.35)" : "#a1a1aa"),
+                    "&:hover": { borderColor: "text.primary", bgcolor: "transparent" },
                   }}
                 >
                   Download CV
@@ -269,8 +274,8 @@ export default IndexPage;
 
 export const Head = () => (
   <SEO
-    title="Xavi Gonzalvo — Machine Learning Researcher"
-    description="Xavi Gonzalvo, Research Scientist at Google in New York. Machine Learning research on LLM efficiency, learning without training, AutoML, and neural architecture search. PhD in Electrical Engineering."
+    title="Xavi Gonzalvo, Machine Learning Researcher"
+    description="Xavi Gonzalvo, Research Scientist at Google in New York, leading a team on LLM efficiency and LLM safety. Previously led Google's AutoML team. PhD in Electrical Engineering."
     pathname="/"
   />
 );

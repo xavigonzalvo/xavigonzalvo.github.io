@@ -16,6 +16,7 @@ const navItemSx = {
   fontSize: "0.875rem",
   fontWeight: 500,
   color: "text.primary",
+  whiteSpace: "nowrap",
 };
 
 export default function Navigation() {

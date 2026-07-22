@@ -41,7 +41,7 @@ function Footer() {
                   ))}
                 </Box>
                 <Typography sx={{ fontSize: "0.875rem", color: "text.secondary" }}>
-                  ©
+                  © {new Date().getFullYear()} Xavi Gonzalvo
                 </Typography>
               </Box>
             </Box>
