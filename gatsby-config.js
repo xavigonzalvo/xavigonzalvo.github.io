@@ -48,9 +48,9 @@ module.exports = {
         short_name: `Xavi Gonzalvo`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#3b82f6`,
+        theme_color: `#14b8a6`,
         display: `minimal-ui`,
-        icon: `src/icons/icon.png`, // Create this icon file
+        icon: `src/icons/icon.png`,
       },
     },
   ],
