@@ -5,8 +5,8 @@ anchor: about
 
 I received my M.Sc. (2004) and Ph.D. (2010) in Electrical Engineering from Universitat Ramon Llull in Barcelona, Spain.
 
-I worked as an Assistant Researcher at La Salle (2003-2008) before joining Phonetic Arts Ltd in Cambridge, UK, a company focused on high-quality synthetic speech for video games. After three years, we were acquired by Google. At Google London, I led the speech research team, then moved to Google NY to join the Research and Machine Intelligence team.
+I worked as an Assistant Researcher at La Salle (2003 to 2008) before joining Phonetic Arts Ltd in Cambridge, UK, a company focused on high quality synthetic speech for video games. After three years, we were acquired by Google. At Google London I led the speech research team, then moved to Google NY to join the Research and Machine Intelligence team.
 
-I previously led the AutoML team, working on ML efficiency, ensembles, multi-source adaptation, and neural architecture search. I'm now focused on LLMs for efficiency and learning without training. My research explores in-context learning dynamics, how prompts can be transmuted into model weights, and the equivalence between context and parameter updates in transformers, aiming to improve long context handling and optimize memory and tokens usage at the model level.
+I previously led the AutoML team, working on ML efficiency, ensembles, multi source adaptation, and neural architecture search. I now lead a team working on LLM efficiency and LLM safety. My research explores in context learning dynamics, how prompts can be transmuted into model weights, and the equivalence between context and parameter updates in transformers, aiming to improve long context handling and optimize memory and token usage at the model level.
 
 This website is a personal platform, and any views expressed here are solely mine and do not represent the opinions of Google.
