@@ -27,6 +27,21 @@ const FOCUS = [
   "Speech synthesis",
 ];
 
+const HIGHLIGHTS = [
+  {
+    title: "LLMs",
+    text: "Leading work on LLM efficiency and safety: learning without training, in context learning dynamics, and long context optimization.",
+  },
+  {
+    title: "AutoML",
+    text: "Created AdaNet and scaled it into a framework for automated neural architecture and ensemble search.",
+  },
+  {
+    title: "Speech synthesis",
+    text: "Built high quality text to speech: hybrid HMM and unit selection systems shipped in production at Google.",
+  },
+];
+
 const SOCIALS = [
   {
     label: "GitHub",
@@ -169,23 +184,20 @@ const IndexPage = () => {
           sx={{
             flex: 1,
             display: "flex",
-            alignItems: "flex-start",
-            pt: { xs: 6, md: 10 },
-            pb: { xs: 6, md: 8 },
+            flexDirection: "column",
+            justifyContent: "center",
+            py: { xs: 6, md: 6 },
           }}
         >
-          <Box
-            sx={{
-              width: "100%",
-              maxWidth: "64rem",
-              mx: "auto",
-              px: { xs: 3, sm: 5 },
-              display: "grid",
-              gridTemplateColumns: { xs: "1fr", md: "1.1fr 0.9fr" },
-              alignItems: "center",
-              gap: { xs: 5, md: 8 },
-            }}
-          >
+          <Box sx={{ width: "100%", maxWidth: "64rem", mx: "auto", px: { xs: 3, sm: 5 } }}>
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateColumns: { xs: "1fr", md: "1.1fr 0.9fr" },
+                alignItems: "center",
+                gap: { xs: 5, md: 8 },
+              }}
+            >
             {/* Identity */}
             <Box>
               <Typography
@@ -262,6 +274,39 @@ const IndexPage = () => {
             {/* Credibility card */}
             <Box sx={{ display: "flex", justifyContent: { xs: "flex-start", md: "flex-end" } }}>
               <CredibilityCard scholar={scholarStats} />
+            </Box>
+            </Box>
+
+            {/* Selected work */}
+            <Box sx={{ mt: { xs: 6, md: 8 } }}>
+              <Typography sx={{ fontSize: "0.7rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em", color: "text.secondary" }}>
+                Selected work
+              </Typography>
+              <Box sx={{ mt: 2, display: "grid", gridTemplateColumns: { xs: "1fr", sm: "repeat(3, 1fr)" }, gap: 2 }}>
+                {HIGHLIGHTS.map((h) => (
+                  <Box
+                    key={h.title}
+                    sx={{
+                      p: 2.5,
+                      borderRadius: "14px",
+                      border: 1,
+                      borderColor: "divider",
+                      transition: "border-color 150ms",
+                      "&:hover": {
+                        borderColor: (t) =>
+                          t.palette.mode === "dark" ? "rgba(255,255,255,0.25)" : "#d4d4d8",
+                      },
+                    }}
+                  >
+                    <Typography sx={{ fontSize: "0.9rem", fontWeight: 700, color: "text.primary" }}>
+                      {h.title}
+                    </Typography>
+                    <Typography sx={{ mt: 0.75, fontSize: "0.8rem", lineHeight: 1.5, color: "text.secondary" }}>
+                      {h.text}
+                    </Typography>
+                  </Box>
+                ))}
+              </Box>
             </Box>
           </Box>
         </Box>
