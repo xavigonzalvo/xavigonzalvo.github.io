@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
+import WorkOutlineIcon from "@mui/icons-material/WorkOutlined";
 import SchoolOutlinedIcon from "@mui/icons-material/SchoolOutlined";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
